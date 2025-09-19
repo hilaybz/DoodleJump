@@ -61,9 +61,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7591cb115e9d1a64db5c71399d61b4f6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  platformPrefab: {fileID: 9035071421163662198, guid: 58449b73e6a5bd143a91f5b47ffcdec2, type: 3}
+  platformPrefabs:
+  - {fileID: 9035071421163662198, guid: 58449b73e6a5bd143a91f5b47ffcdec2, type: 3}
   spawnChance: 0.85
-  xRange: 2.4
-  parent: {fileID: 0}
+  horizontalPadding: 0.6
   targetCamera: {fileID: 0}
   destroyOffset: 1
