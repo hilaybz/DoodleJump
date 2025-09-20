@@ -12,6 +12,8 @@ GameObject:
   - component: {fileID: 6341248904603846170}
   - component: {fileID: 4769946584221414780}
   - component: {fileID: 4279896375054279155}
+  - component: {fileID: 8714562911511514910}
+  - component: {fileID: 4530472239911273733}
   m_Layer: 0
   m_Name: BrokenPlatformPrefab
   m_TagString: Untagged
@@ -151,3 +153,41 @@ PlatformEffector2D:
   m_UseSideFriction: 0
   m_UseSideBounce: 0
   m_SideArc: 1
+--- !u!114 &8714562911511514910
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5623758452199150043}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 66f60b37e65819846b88ac2c9bb7fea5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  disableColliderDelay: 0.02
+  destroyDelay: 0.5
+  animator: {fileID: 0}
+  audioSource: {fileID: 0}
+--- !u!95 &4530472239911273733
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5623758452199150043}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 0be23c3419f5e954b839a4a4c0effe01, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
