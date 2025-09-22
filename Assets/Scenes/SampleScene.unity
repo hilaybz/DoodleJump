@@ -871,6 +871,8 @@ GameObject:
   - component: {fileID: 1159186452}
   - component: {fileID: 1159186451}
   - component: {fileID: 1159186453}
+  - component: {fileID: 1159186454}
+  - component: {fileID: 1159186455}
   m_Layer: 0
   m_Name: Doodle
   m_TagString: Player
@@ -1035,6 +1037,32 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveSpeed: 4
   rb: {fileID: 0}
+--- !u!114 &1159186454
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1159186448}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1bbb8ec6633f02543a7f1b902f6898a5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  targetCamera: {fileID: 0}
+--- !u!114 &1159186455
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1159186448}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 570ab9620de8cfd4fafde6073b696f3c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rb: {fileID: 1159186451}
 --- !u!1 &1297749251
 GameObject:
   m_ObjectHideFlags: 0
