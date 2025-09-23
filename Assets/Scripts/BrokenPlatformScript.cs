@@ -6,10 +6,13 @@ public class BrokenPlatform : MonoBehaviour
     [Header("Timing")]
     [SerializeField] private float disableColliderDelay = 0.02f; // small delay so contact registers
     [SerializeField] private float destroyDelay = 0.5f;          // time to keep visuals after cracking
+    [SerializeField, Range(0f, 1f)] private float volume = 0.8f;
 
     [Header("FX (optional)")]
     [SerializeField] private Animator animator;                  // has a "Crack" trigger
     [SerializeField] private AudioSource audioSource;            // crack SFX
+    [SerializeField] private AudioClip crackSFX;                 // drag crack sound here
+
 
     private bool isBroken;
     private Collider2D col;
@@ -44,7 +47,10 @@ public class BrokenPlatform : MonoBehaviour
         isBroken = true;
 
         if (animator) animator.SetTrigger("Crack");
-        if (audioSource) audioSource.Play();
+
+        // play crack sound
+        if (audioSource && crackSFX)
+            audioSource.PlayOneShot(crackSFX, volume);
 
         // Let physics see the contact this frame, then drop the collider
         Invoke(nameof(DisableCollider), disableColliderDelay);
