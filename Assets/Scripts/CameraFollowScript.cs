@@ -1,9 +1,9 @@
 using UnityEngine;
-
+using UnityEngine.UI;
 public class CameraFollowScript : MonoBehaviour
 {
     public Transform target;
-
+    public Text scoreText;
     private void LateUpdate()
     {
         if (target.position.y > transform.position.y)
@@ -19,8 +19,8 @@ public class CameraFollowScript : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    private void Update()
     {
-        
+        scoreText.text = ((int)(transform.position.y * 10)).ToString();
     }
 }
