@@ -61,12 +61,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7591cb115e9d1a64db5c71399d61b4f6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spawnChance: 0.9
+  manager: {fileID: 0}
+  spawnChance: 0.3
   horizontalPadding: 0.6
   targetCamera: {fileID: 0}
   destroyOffset: 1
   spawnTable:
   - prefab: {fileID: 9035071421163662198, guid: 58449b73e6a5bd143a91f5b47ffcdec2, type: 3}
-    weight: 0.8
+    weight: 0.7
   - prefab: {fileID: 5623758452199150043, guid: d65e74bb7ed585c42bbc5da6c7c3c513, type: 3}
-    weight: 0.2
+    weight: 0.3
