@@ -68,6 +68,8 @@ MonoBehaviour:
   destroyOffset: 1
   spawnTable:
   - prefab: {fileID: 9035071421163662198, guid: 58449b73e6a5bd143a91f5b47ffcdec2, type: 3}
-    weight: 0.7
+    weight: 0.6
   - prefab: {fileID: 5623758452199150043, guid: d65e74bb7ed585c42bbc5da6c7c3c513, type: 3}
-    weight: 0.3
+    weight: 0.2
+  - prefab: {fileID: 3121048463536031394, guid: 8eb6a2da92243474a8cb42bf45be3fa1, type: 3}
+    weight: 0.2
