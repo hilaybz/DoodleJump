@@ -11,6 +11,9 @@ public class ExplosivePlatformScript : MonoBehaviour
     [SerializeField] private Animator animator; // drag your Animator here
     [SerializeField] private string explodeTrigger = "Explode"; // Animator trigger name
 
+    private bool exploded;
+
+
     private void Awake()
     {
         if (!audioSource) audioSource = GetComponent<AudioSource>();
@@ -22,11 +25,18 @@ public class ExplosivePlatformScript : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
+        if (exploded) return; // one-shot
+
         if (collision.gameObject.CompareTag("Player") && collision.relativeVelocity.y <= 0f)
         {
             Rigidbody2D rb = collision.gameObject.GetComponent<Rigidbody2D>();
             if (rb != null)
             {
+                exploded = true;
+
+                var col = GetComponent<Collider2D>();
+                if (col) col.enabled = false; // let player fall through
+
                 // Play animation
                 if (animator)
                     animator.SetTrigger(explodeTrigger);
@@ -38,5 +48,12 @@ public class ExplosivePlatformScript : MonoBehaviour
                 // TODO: Handle game over logic here (disable player, show UI, etc.)
             }
         }
+    }
+
+
+    // called by Animation Event at the end of Explosive_Explosion clip
+    public void OnExplosionFinished()
+    {
+        Destroy(gameObject);
     }
 }
