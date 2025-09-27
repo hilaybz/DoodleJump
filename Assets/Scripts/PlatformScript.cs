@@ -3,11 +3,14 @@ using UnityEngine;
 public class PlatformScript : MonoBehaviour
 {
     [SerializeField] private float jumpForce;
+    [SerializeField] private float jumpCooldown = 0.05f;
 
     [Header("Audio")]
     [SerializeField] private AudioSource audioSource;
     [SerializeField] private AudioClip jumpSFX;
     [SerializeField, Range(0f, 1f)] private float volume = 0.8f;
+
+    private float _lastJumpTime = -999f;
 
 
     private void Awake()
@@ -20,17 +23,24 @@ public class PlatformScript : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void OnCollisionEnter2D(Collision2D collision) { TryBounce(collision); }
+    private void OnCollisionStay2D(Collision2D collision) { TryBounce(collision); }
+
+
+    private void TryBounce(Collision2D collision)
     {
+        // Cooldown to avoid multi-trigger across frames
+        if (Time.time - _lastJumpTime < jumpCooldown) return;
+
         if (collision.gameObject.CompareTag("Player") && collision.relativeVelocity.y <= 0f)
         {
             Rigidbody2D rb = collision.gameObject.GetComponent<Rigidbody2D>();
@@ -44,7 +54,9 @@ public class PlatformScript : MonoBehaviour
                 {
                     audioSource.PlayOneShot(jumpSFX, volume);
                 }
+                _lastJumpTime = Time.time;
             }
         }
     }
+
 }
