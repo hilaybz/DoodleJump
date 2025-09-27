@@ -77,8 +77,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: 1002136271
+  m_SortingLayer: 2
   m_SortingOrder: 0
   m_Sprite: {fileID: 1834559386802486852, guid: d271cf8b069e8584296dbfd2aa86fbe7, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -166,6 +166,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   jumpForce: 9
+  jumpCooldown: 0.1
   audioSource: {fileID: -2501032651056185092}
   jumpSFX: {fileID: 8300000, guid: 3d24042aebd9c3c4597bbadeeed67e18, type: 3}
   volume: 0.8

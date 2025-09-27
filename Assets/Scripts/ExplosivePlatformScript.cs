@@ -11,8 +11,14 @@ public class ExplosivePlatformScript : MonoBehaviour
     [SerializeField] private Animator animator; // drag your Animator here
     [SerializeField] private string explodeTrigger = "Explode"; // Animator trigger name
 
-    private bool exploded;
+    [Header("Sorting")]
+    [SerializeField] private string platformLayer = "Platforms"; // idle layer
+    [SerializeField] private int platformOrder = 0;
+    [SerializeField] private string explosionLayer = "FX";       // boom layer (above Player)
+    [SerializeField] private int explosionOrder = 0;
 
+    private bool exploded;
+    private SpriteRenderer sr;
 
     private void Awake()
     {
@@ -21,6 +27,15 @@ public class ExplosivePlatformScript : MonoBehaviour
         audioSource.spatialBlend = 0f;     // 2D sound
 
         if (!animator) animator = GetComponent<Animator>(); // auto-assign if Animator is on same GameObject
+        sr = GetComponent<SpriteRenderer>();
+
+
+        // ensure idle starts behind the player
+        if (sr)
+        {
+            sr.sortingLayerName = platformLayer;
+            sr.sortingOrder = platformOrder;
+        }
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -36,6 +51,13 @@ public class ExplosivePlatformScript : MonoBehaviour
 
                 var col = GetComponent<Collider2D>();
                 if (col) col.enabled = false; // let player fall through
+
+                // promote to FX so explosion draws over the player
+                if (sr)
+                {
+                    sr.sortingLayerName = explosionLayer;
+                    sr.sortingOrder = explosionOrder;
+                }
 
                 // Play animation
                 if (animator)
