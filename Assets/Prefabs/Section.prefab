@@ -45,7 +45,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bb6879d2b3ac1fd42a8a831f8c5f8a61, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  height: 0.8
+  height: 0.3
   targetCamera: {fileID: 0}
   fillColor: {r: 0, g: 1, b: 0, a: 0.25882354}
   lineColor: {r: 0.19619471, g: 0.40251565, b: 0.19619471, a: 1}
@@ -65,7 +65,7 @@ MonoBehaviour:
   spawnChance: 0.3
   horizontalPadding: 0.6
   targetCamera: {fileID: 0}
-  destroyOffset: 1
+  destroyOffset: 0.4
   spawnTable:
   - prefab: {fileID: 9035071421163662198, guid: 58449b73e6a5bd143a91f5b47ffcdec2, type: 3}
     weight: 0.65
@@ -74,4 +74,4 @@ MonoBehaviour:
   - prefab: {fileID: 3121048463536031394, guid: 8eb6a2da92243474a8cb42bf45be3fa1, type: 3}
     weight: 0.15
   - prefab: {fileID: 6834354626342513627, guid: 4d7404e3e0c5c2843a55063af08dbf82, type: 3}
-    weight: 0.1
+    weight: 0.5

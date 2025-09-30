@@ -431,7 +431,7 @@ MonoBehaviour:
   target: {fileID: 1159186450}
   scoreText: {fileID: 31423056}
   verticalOffset: -1
-  scoreMultiplier: 10
+  scoreMultiplier: 5
 --- !u!1 &619394800
 GameObject:
   m_ObjectHideFlags: 0
