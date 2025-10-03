@@ -2,6 +2,8 @@ using UnityEngine;
 
 public class ExplosivePlatformScript : MonoBehaviour
 {
+    public GameManagerScript gameManager;
+
     [Header("Audio")]
     [SerializeField] private AudioSource audioSource;
     [SerializeField] private AudioClip explosiveSFX;
@@ -17,17 +19,20 @@ public class ExplosivePlatformScript : MonoBehaviour
     [SerializeField] private string explosionLayer = "FX";       // boom layer (above Player)
     [SerializeField] private int explosionOrder = 0;
 
+
     private bool exploded;
     private SpriteRenderer sr;
 
     private void Awake()
     {
         if (!audioSource) audioSource = GetComponent<AudioSource>();
-        audioSource.playOnAwake = false;   // don’t play automatically
+        audioSource.playOnAwake = false;   // donï¿½t play automatically
         audioSource.spatialBlend = 0f;     // 2D sound
 
         if (!animator) animator = GetComponent<Animator>(); // auto-assign if Animator is on same GameObject
         sr = GetComponent<SpriteRenderer>();
+
+        gameManager = Object.FindFirstObjectByType<GameManagerScript>();
 
 
         // ensure idle starts behind the player
@@ -67,7 +72,13 @@ public class ExplosivePlatformScript : MonoBehaviour
                 if (audioSource && explosiveSFX)
                     audioSource.PlayOneShot(explosiveSFX, volume);
 
-                // TODO: Handle game over logic here (disable player, show UI, etc.)
+                var playerRb = collision.rigidbody; // same as collision.gameObject.GetComponent<Rigidbody2D>()
+                if (playerRb)
+                {
+                    playerRb.linearVelocity = Vector2.zero;     // no lateral or vertical motion
+                    playerRb.gravityScale = 0f;           // stop falling
+                    playerRb.constraints = RigidbodyConstraints2D.FreezeAll; // freeze pos+rot
+                }
             }
         }
     }
@@ -76,6 +87,9 @@ public class ExplosivePlatformScript : MonoBehaviour
     // called by Animation Event at the end of Explosive_Explosion clip
     public void OnExplosionFinished()
     {
+        Debug.Log("Player has exploded. Game Over!");
+        gameManager.gameOver();
+
         Destroy(gameObject);
     }
 }
