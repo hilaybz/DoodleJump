@@ -8,6 +8,7 @@ public class CameraFollowScript : MonoBehaviour
 
     [Header("Score UI")]
     public Text scoreText;
+    public static int CurrentScore { get; private set; }
 
     [Header("Camera Settings")]
     [Tooltip("How far above the player the camera should stay (world units).")]
@@ -31,5 +32,6 @@ public class CameraFollowScript : MonoBehaviour
     {
         // score = camera Y * multiplier
         scoreText.text = ((int)(transform.position.y * scoreMultiplier)).ToString();
+        CurrentScore = (int)(transform.position.y * scoreMultiplier);
     }
 }
